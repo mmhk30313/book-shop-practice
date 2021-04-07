@@ -43,8 +43,8 @@ const Orders = () => {
             // console.log(userBookForId);
             let _id;
             if(!userBookForId){
-                console.log(('insertion'));
-                fetch(`http://localhost:5000/add-book`, {
+                // console.log(('insertion'));
+                fetch(`http://localhost:5000/user/add-book`, {
                     method: "POST",
                     body: JSON.stringify(newUserBook),
                     headers: {

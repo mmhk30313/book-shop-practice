@@ -15,6 +15,7 @@ import Admin from "./Components/Admin/Admin";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import NotFound from "./Components/NotFound/NotFound";
 import OrderProceed from "./Components/OrderProceed/OrderProceed";
+import CheckOutProceed from "./Components/CheckOutProceed/CheckOutProceed";
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -51,15 +52,25 @@ function App() {
               <MyNavbar/>
               <Login/>
             </Route>
+            <Route path="/login?user=admin">
+              <MyNavbar/>
+              <Login/>
+            </Route>
             {/* Private Route */}
             <PrivateRoute path="/order/:key">
               <MyNavbar/>
               <Orders/>
             </PrivateRoute>
-            <Route path='/admin' component={Admin}/>
+            <PrivateRoute path='/admin/:key'>
+              <Admin/>
+            </PrivateRoute>
             <Route path='/order-proceed'>
               <MyNavbar/>
               <OrderProceed/>
+            </Route>
+            <Route path="/user-orders">
+              <MyNavbar/>
+              <CheckOutProceed orders={userOrders} />
             </Route>
             <Route path='*/:page'>
               <NotFound/>

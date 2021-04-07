@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { UserContext } from '../../App';
 import uploadIcon from '../../images/icons/cloud-upload-outline 1.png';
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
 
 const AddBook = () => {
     const [loggedInUser, setLoggedInUser, books, setBooks] = useContext(UserContext);
@@ -55,7 +55,10 @@ const AddBook = () => {
                 authorRef.current.value = null;
                 priceRef.current.value = null;
                 // alert("Welcome!!! your book is uploaded")
+
+        // .....MODAL Bootstrap......
                 setModalShow(true)
+
                 fetch('http://localhost:5000/allBooks')
                 .then(res => res.json())
                 .then(data => setBooks(data))
